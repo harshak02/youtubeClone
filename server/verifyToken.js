@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { createError } from "./error.js";
 
 export const verifyToken = async (req,res,next) => {
+    console.log("My token" + req.cookies.access_token);
     const token = req.cookies.access_token || req.body.token;
     if(!token){
         return next(createError(401,"Unauthenticated User!"));
